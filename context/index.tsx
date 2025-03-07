@@ -28,7 +28,7 @@ export const steps: IStep[] = [
         title: "Car details",
         stepId: 1,
         subSteps: [
-            { label: "Your car", id: 10, linkTo: '/vehicle-lookup', status: ESubStepLabel.INCOMPLETE },
+            { label: "Your car", id: 10, linkTo: '/your-car', status: ESubStepLabel.INCOMPLETE },
             { label: "Car value", id: 11, linkTo: '/car-value', status: ESubStepLabel.INCOMPLETE },
             { label: "Car usage", id: 12, linkTo: '/car-usage', status: ESubStepLabel.INCOMPLETE },
             { label: "Car storage", id: 13, linkTo: '/car-storage', status: ESubStepLabel.INCOMPLETE },
@@ -74,10 +74,14 @@ const initialState: IProgressData = {
 }
 
 export enum EProgressActionEnum {
-    UPDATE_SUBSTEP_STATUS = 'UPDATE_SUBSTEP_STATUS'
+    UPDATE_SUBSTEP_STATUS = 'UPDATE_SUBSTEP_STATUS',
+    UPDATE_SUBSTEP_STATUS_VIA_PATHNAME = 'UPDATE_SUBSTEP_STATUS_VIA_PATHNAME',
 }
 
-type ProgressAction = { type: EProgressActionEnum.UPDATE_SUBSTEP_STATUS, payload: { subStep: ISubStep } }
+type ProgressAction = {
+    type: EProgressActionEnum.UPDATE_SUBSTEP_STATUS, payload: { subStep: ISubStep }
+} |
+{ type: EProgressActionEnum.UPDATE_SUBSTEP_STATUS_VIA_PATHNAME, payload: { subStepPathname: string } }
 
 
 
@@ -130,10 +134,43 @@ export const ProgressReducer = (initialState: IProgressData, action: ProgressAct
 
             return _initialState
 
-            break;
+        case EProgressActionEnum.UPDATE_SUBSTEP_STATUS_VIA_PATHNAME:
+            // console.log(action, 'Hii');
+
+            const subStepPathname = action.payload.subStepPathname;
+
+            let matchingSubStep = initialState.steps.flatMap((step) => step.subSteps).find(step => step.linkTo === subStepPathname)
+
+            if (!matchingSubStep) return initialState
+
+
+
+
+            const [currentMatchStep, currentMatchSubStep] = `${matchingSubStep.id}`.split('')
+
+            matchingSubStep = { ...matchingSubStep, status: ESubStepLabel.INPROGRESS }
+
+
+
+            const _matchSteps = initialState.steps.map(_step => ({
+                ..._step,
+
+                subSteps: _step.subSteps.map((_subStep => ({
+                    ..._subStep,
+                    status: _subStep.id === matchingSubStep.id
+                        ? ESubStepLabel.INPROGRESS :
+                        _subStep.id < matchingSubStep.id ?
+                            ESubStepLabel.COMPLETED : ESubStepLabel.INCOMPLETE
+                })))
+            }))
+
+            _initialState = { steps: _matchSteps, allSubSteps: [...initialState.allSubSteps], currentStep: currentMatchStep, currentSubStep: currentMatchSubStep }
+
+
+            return _initialState
+
 
         default:
             return initialState
-            break;
     }
 }

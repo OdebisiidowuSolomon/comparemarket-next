@@ -57,7 +57,7 @@ export const QuestionLegend: React.FC<IQuestionLabelProps> = ({ text, ...props }
 }
 
 export const QuestionSubLabel: React.FC<IQuestionSubLabelProps> = ({ text, ...props }) => {
-    return <span {...props} className={`text-[16px] block mt-3 ${props.className}`}>{text}</span>
+    return <span {...props} className={`text-[16px] block mb-3 ${props.className}`}>{text}</span>
 }
 
 export const RadioSelect = ({ labelText, selected, subtitle }: { labelText: string, subtitle?: string, selected?: boolean }) => {

@@ -7,6 +7,8 @@
   --color-baseColor: var(--baseColor);
   --color-theme-surface-mid: var(--theme-surface-mid);
   --color-green: var(--green);
+
+  --breakpoint-cmxl: 1550px;
 }
 
 :root {

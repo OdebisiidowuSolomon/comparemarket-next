@@ -20,7 +20,7 @@ function CarStorage() {
                     </div>
                 </QuestionContainer>
 
-                <QuestionContainer className='border-t-0!'>
+                <QuestionContainer className='border-y-0!'>
                     <QuestionLegend text='Where do you keep your car during the night?' className='pb-4!' />
                     <QuestionSubLabel text='If you leave your car in different places throughout the week, just tell us where the car’s kept most of the time.' className='mt-0! pt-0!' />
 
