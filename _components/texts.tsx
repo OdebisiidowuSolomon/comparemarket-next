@@ -62,25 +62,29 @@ export const QuestionSubLabel: React.FC<IQuestionSubLabelProps> = ({ text, ...pr
 
 export const RadioSelect = ({ labelText, selected, subtitle }: { labelText: string, subtitle?: string, selected?: boolean }) => {
 
-    return <div className='flex items-start gap-3 mb-6'
-        onClick={(e) => console.log('Clicked', e)}
+    const [isSelected, setIsSelected] = useState(selected)
+
+
+    return <div className='flex items-start gap-3 mb-6 cursor-pointer'
+        onClick={() => setIsSelected(p => !p)}
     >
-        <CustomRadioInput isSelected={selected} />
-        <div>
-            <label htmlFor="">
-                <span>{labelText}</span>
-            </label>
+        <CustomRadioInput isSelected={isSelected} />
+        <>
+            <span>{labelText}</span>
             {subtitle && <p className='text-gray-500 text-[15px] font-medium'>{subtitle}</p>}
-        </div>
+        </>
     </div>
 }
 
 export const CheckboxSelect = ({ labelText, selected }: { labelText: string, selected?: boolean }) => {
 
+    const [isSelected, setIsSelected] = useState(selected)
+
+
     return <div className='flex items-center gap-3 my-5'
-        onClick={(e) => console.log('Clicked', e)}
+        onClick={() => setIsSelected(p => !p)}
     >
-        <CustomCheckboxInput isSelected={selected} />
+        <CustomCheckboxInput isSelected={isSelected} />
         <label htmlFor="">
             <span>{labelText}</span>
         </label>

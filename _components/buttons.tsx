@@ -1,6 +1,9 @@
+'use client'
+
 import { COLORS } from '@/constants/colors';
+import { useNavigationHandler } from '@/lib/handleNavigation';
 import Link from 'next/link';
-import React from 'react'
+import React from 'react';
 import { IoMdCheckmark } from 'react-icons/io';
 import CustomInput from './input';
 
@@ -31,6 +34,8 @@ export const CustomLinkButton: React.FC<ButtonProps> = ({ titleClassName, outlin
 
 
 export const CustomRadioInput = ({ isSelected }: { isSelected?: boolean }) => {
+
+
     return <div className='h-7 w-7 rounded-full border-2 border-baseColor flex items-center justify-center'>
         {isSelected && <div className='h-[19px] w-[19px] bg-baseColor rounded-full' />}
     </div>
@@ -50,4 +55,21 @@ export const TextOnInput = ({ labelText }: { labelText: string }) => {
         <p className='my-2 text-baseColor'>{labelText}</p>
         <CustomInput className='w-[70px]' />
     </div>
+}
+
+
+export const CustomNextButton = () => {
+
+    const handleNavigation = useNavigationHandler('next')
+
+
+    return <CustomButton title='Next' onClick={handleNavigation} className='cursor-pointer' />
+}
+
+export const CustomBackButton = () => {
+
+    const handleNavigation = useNavigationHandler('prev')
+
+
+    return <CustomButton title='Back' onClick={handleNavigation} outlinebutton className='cursor-pointer' />
 }

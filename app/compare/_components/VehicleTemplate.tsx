@@ -11,7 +11,7 @@ function VehicleTemplate({
 }>) {
     return (
         <>
-            <span className='font-bold hidden md:block'>{label || 'Car details - Your car'}</span>
+            <span className='font-bold mb-4 hidden md:block'>{label || 'Car details - Your car'}</span>
             <div className='mb-8 md:my-8 md:py-8 md:pb-6 border-y border-y-gray-300'>
                 {children}
             </div>

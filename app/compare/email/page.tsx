@@ -1,7 +1,7 @@
+import { CustomNextButton } from '@/_components/buttons'
+import CustomInput from '@/_components/input'
 import { AccordionItem, CheckMarkText, EditText, SuccessMessage } from '@/_components/texts'
 import VehicleTemplate from '../_components/VehicleTemplate'
-import CustomInput from '@/_components/input'
-import CustomButton from '@/_components/buttons'
 
 function EmailPage() {
     return (
@@ -34,8 +34,9 @@ function EmailPage() {
 
             </VehicleTemplate>
 
-            <div>
-                <CustomButton title='Next' className='ml-auto' />
+            <div className='flex ml-auto'>
+                {/* <CustomButton title='Next' className='ml-auto' /> */}
+                <CustomNextButton />
             </div>
         </div>
     )

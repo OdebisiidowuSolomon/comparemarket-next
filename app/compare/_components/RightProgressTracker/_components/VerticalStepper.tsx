@@ -40,10 +40,6 @@ const VerticalStepperStep = ({ isLastItem, step, }: { step: IStep, isExpanded?: 
     const [isExpanded, setIsExpanded] = useState(_prevStepIsDone)
 
 
-    console.log(_prevStepIsDone, isExpanded, step.stepId, step.title, 'here');
-
-
-
     return <div>
         <div className="flex items-centerl gap-3">
             <div className="flex flex-col items-center">

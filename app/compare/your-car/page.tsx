@@ -2,7 +2,7 @@ import React from 'react'
 import VehicleTemplate from '../_components/VehicleTemplate'
 import { AccordionItem, EditText, QuestionContainer, QuestionLegend, QuestionSubLabel, RadioSelect } from '@/_components/texts'
 import { CustomSelect } from '@/_components/input'
-import CustomButton from '@/_components/buttons'
+import CustomButton, { CustomNextButton } from '@/_components/buttons'
 
 function YourCarPage() {
     return (
@@ -86,7 +86,9 @@ function YourCarPage() {
 
             </VehicleTemplate>
 
-            <CustomButton title='Next' className='ml-auto' />
+            <div className='flex justify-end'>
+                <CustomNextButton />
+            </div>
 
         </div>
     )

@@ -1,4 +1,4 @@
-import CustomButton, { CustomLinkButton } from '@/_components/buttons'
+import CustomButton, { CustomBackButton, CustomNextButton } from '@/_components/buttons'
 import CustomInput from '@/_components/input'
 import { AccordionItem, QuestionContainer, QuestionLegend, QuestionSubLabel, RadioSelect, Text3 } from '@/_components/texts'
 import VehicleTemplate from '../_components/VehicleTemplate'
@@ -59,8 +59,9 @@ function YourHouseHoldPage() {
             </VehicleTemplate>
 
             <div className='flex items-center justify-between'>
-                <CustomLinkButton outlinebutton title='Back' />
-                <CustomButton title='Next' />
+                <CustomBackButton />
+                {/* <CustomButton title='Next' /> */}
+                <CustomNextButton />
             </div>
         </div>
     )

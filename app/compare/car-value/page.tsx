@@ -1,8 +1,7 @@
-import React from 'react'
-import VehicleTemplate from '../_components/VehicleTemplate'
-import { AccordionItem, QuestionLegend, QuestionSubLabel } from '@/_components/texts'
-import CustomButton from '@/_components/buttons'
+import { CustomBackButton, CustomNextButton } from '@/_components/buttons'
 import CustomInput from '@/_components/input'
+import { AccordionItem, QuestionLegend, QuestionSubLabel } from '@/_components/texts'
+import VehicleTemplate from '../_components/VehicleTemplate'
 
 function CarValuePage() {
     return (
@@ -22,8 +21,10 @@ function CarValuePage() {
             </VehicleTemplate>
 
             <div className='flex justify-between items-center'>
-                <CustomButton title='Back' outlinebutton />
-                <CustomButton title='Next' />
+                {/* <CustomButton title='Back' outlinebutton /> */}
+                <CustomBackButton/>
+                {/* <CustomButton title='Next' /> */}
+                <CustomNextButton />
             </div>
 
         </div>

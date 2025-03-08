@@ -17,7 +17,7 @@ export interface IStep {
 }
 
 export interface ISubStep {
-    label: string; id: number, linkTo?: string, status: ESubStepLabel
+    label: string; id: number, linkTo: string, status: ESubStepLabel
 }
 
 
@@ -142,8 +142,6 @@ export const ProgressReducer = (initialState: IProgressData, action: ProgressAct
             let matchingSubStep = initialState.steps.flatMap((step) => step.subSteps).find(step => step.linkTo === subStepPathname)
 
             if (!matchingSubStep) return initialState
-
-
 
 
             const [currentMatchStep, currentMatchSubStep] = `${matchingSubStep.id}`.split('')
