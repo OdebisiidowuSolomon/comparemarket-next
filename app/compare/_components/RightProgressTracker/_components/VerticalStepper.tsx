@@ -51,11 +51,9 @@ const VerticalStepperStep = ({ isLastItem, step, }: { step: IStep, isExpanded?: 
                     {stepIsDone ? <IoCheckmarkSharp size={18} color={COLORS.white} /> : isExpanded ? <Pencil size={18} color={COLORS.baseColor} /> : <span className="text-gray-400 font-medium">{step.stepId}</span>}
                 </div>
                 <div className={`w-[3px] bg-theme-surface-mid ${isLastItem ? 'h-0' : 'h-full'} flex flex-col items-center`}>
-                    {/* <div className={`w-[5px] bg-baseColor ${isLastItem ? 'h-0' : isExpanded && 'h-[50%]'}`} /> */}
                     <div
                         className={`w-[5px] bg-baseColor ${isLastItem && 'h-0'}`}
                         style={{ height: !isExpanded ? 0 : step.stepId < +currentStep ? '100%' : step.stepId > +currentStep ? 0 : `${Math.floor(((+currentSubStep + 1) / step.subSteps.length) * 100)}%` }}
-                    // style={{ height: isExpanded ? +currentStep < step.stepId ? '100%' : `${Math.floor((5 / step.subSteps.length) * 100)}%` : 0 }}
                     />
 
                 </div>
@@ -71,10 +69,8 @@ const VerticalStepperStep = ({ isLastItem, step, }: { step: IStep, isExpanded?: 
                     </div>}
                 </div>
                 {
-                    // isExpanded &&
-                    // <div className={`flex flex-col py-3 pb-0 transition-all duration-500 ease-in-out overflow-hidden ${isExpanded ? "h-auto opacity-100" : "h-0 opacity-0"}`}>
                     <motion.div
-                        className={`flex flex-col py-3 pb-0 overflow-hidden`}
+                        className={`flex flex-col pb-0 overflow-hidden p-5 py-7 md:px-0! md:py-3`}
                         initial={false}
                         // animate={{ height: _prevStepIsDone ? isExpanded ? "auto" : 0 : 0, opacity: isExpanded ? 1 : 0 }}
                         animate={{ height: isExpanded ? "auto" : 0, opacity: isExpanded ? 1 : 0 }}
@@ -85,12 +81,6 @@ const VerticalStepperStep = ({ isLastItem, step, }: { step: IStep, isExpanded?: 
                         {step.subSteps.map((subStep, index, arr) => (
                             <VerticalStepperStepItem key={subStep.id} subStep={subStep} status={subStep.status} isLastItem={arr.length - 1 === index} />
                         ))}
-
-                        {/* <VerticalStepperStepItem text="Car value" status={ESubStepLabel.PREVACTIVE} />
-                    <VerticalStepperStepItem text="Car usage" status={ESubStepLabel.ACTIVE} />
-                    <VerticalStepperStepItem text="Car storage" status={ESubStepLabel.INACTIVE} />
-                    <VerticalStepperStepItem text="Other cars" status={ESubStepLabel.INACTIVE} /> */}
-
                     </motion.div>}
             </div>
         </div>

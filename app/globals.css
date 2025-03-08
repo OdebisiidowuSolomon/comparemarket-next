@@ -9,6 +9,8 @@
   --color-green: var(--green);
 
   --breakpoint-cmxl: 1550px;
+  --breakpoint-cmxs: 510px;
+  --breakpoint-cmxss: 365px;
 }
 
 :root {

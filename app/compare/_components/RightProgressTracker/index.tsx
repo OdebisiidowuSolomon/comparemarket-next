@@ -9,12 +9,9 @@ function RightProgressTracker() {
 
 
     return (
-        <div className="p-6 flex flex-col flex-[0.3]">
+        <div className="flex flex-col cmxss:p-6 cmxss:flex-[0.3]">
             <ProgressBar />
-            <VerticalStepper
-
-            />
-
+            <VerticalStepper />
         </div>
     );
 }
