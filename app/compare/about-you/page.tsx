@@ -7,7 +7,7 @@ function AboutYouPage() {
     return (
         <div>
             <VehicleTemplate label='Your details - About you'>
-                <QuestionContainer className='border-t-0!'>
+                <QuestionContainer className='border-y-0!'>
                     <QuestionLegend text='What’s your name?' className='pb-4!' />
                     <AccordionItem label='What if the title options don’t apply to me?' content="We understand that not everyone may identify with these titles. We are working to change this. For us to provide a comparison service, we ensure that the data gathered via the questions asked, matches that required by our partners. This includes selecting a title from these historic options. Unfortunately, these cannot be immediately changed as the data would not yet be recognised, resulting in insurance providers being unable to quote. For the time being, please select an option for you and any other people you tell us about. Your answer won't impact the prices or results displayed" />
 

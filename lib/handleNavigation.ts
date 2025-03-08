@@ -41,7 +41,7 @@ export function useNavigationHandler(dir: 'prev' | 'next') {
 
                 if (nextSubStep.linkTo === '#' || !nextSubStep.linkTo) return
 
-                alert(`${validIndex} ${allSubSteps.length} ${nextSubStep.linkTo}`)
+                // alert(`${validIndex} ${allSubSteps.length} ${nextSubStep.linkTo}`)
 
 
                 router.push(`/compare${nextSubStep.linkTo}`)

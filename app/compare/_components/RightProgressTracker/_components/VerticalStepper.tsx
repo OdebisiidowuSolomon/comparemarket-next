@@ -3,7 +3,7 @@ import { EProgressActionEnum, ESubStepLabel, IStep, ISubStep, ProgressContext } 
 import { motion } from 'framer-motion';
 import { Pencil, Plus } from 'lucide-react';
 import Link from "next/link";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaMinus } from "react-icons/fa";
 import { IoCheckmarkSharp } from "react-icons/io5";
 
@@ -38,6 +38,15 @@ const VerticalStepperStep = ({ isLastItem, step, }: { step: IStep, isExpanded?: 
 
     // const [isExpanded, setIsExpanded] = useState(isOpened && _prevStepIsDone)
     const [isExpanded, setIsExpanded] = useState(_prevStepIsDone)
+
+
+    useEffect(() => {
+        const _prevStepIsDone = step.stepId <= 1 ? true : !!steps.find(s => s.stepId === step.stepId - 1)?.subSteps.every(step => step.status === ESubStepLabel.COMPLETED)
+        setIsExpanded(_prevStepIsDone)
+        // if (_prevStepIsDone) {
+        //     setIsExpanded(_prevStepIsDone)
+        // }
+    }, [step.stepId, steps])
 
 
     return <div>
