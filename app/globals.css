@@ -7,6 +7,8 @@
   --color-baseColor: var(--baseColor);
   --color-theme-surface-mid: var(--theme-surface-mid);
   --color-green: var(--green);
+  --color-theme-surface-highlighted: var(--theme-surface-highlighted);
+  --color-theme-surface-low: var(--theme-surface-low);
 
   --breakpoint-cmxl: 1550px;
   --breakpoint-cmxs: 510px;
@@ -19,5 +21,11 @@
 
   --baseColor: #2843d0;
   --theme-surface-mid: #e6e9fc;
+  --theme-surface-highlighted: #e1f2ed;
+  --theme-surface-low: #f3f4f4;
   --green: #06664C;
+}
+
+body {
+  scroll-behavior: smooth;
 }

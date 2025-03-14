@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { BsPencil } from 'react-icons/bs';
 import { IoIosCheckmarkCircle, IoMdCheckmark } from 'react-icons/io';
-import { ILabelProps, IQuestionContainer, IQuestionLabelProps, IQuestionSubLabelProps, IText } from './components.def';
+import { ILabelProps, IQuestionContainer, IQuestionH2TextProps, IQuestionLabelProps, IQuestionSubLabelProps, IText, TSize } from './components.def';
 import { CustomCheckboxInput, CustomRadioInput } from './buttons';
 
 export function AccordionItem({ label = "Why do we ask this?", content }: { label?: string, content: string }) {
@@ -50,7 +50,9 @@ export const CheckMarkText = () => {
 }
 
 
-
+export const QuestionH2Text: React.FC<IQuestionH2TextProps> = ({ text, ...props }) => {
+    return <h2 className={`text-baseColor text-[1.7rem] font-semibold pb-4 ${props.className}`}>{text}</h2>
+}
 
 export const QuestionLegend: React.FC<IQuestionLabelProps> = ({ text, ...props }) => {
     return <legend className={`text-baseColor text-[22px] font-medium pb-4 ${props.className}`}>{text}</legend>
@@ -60,23 +62,23 @@ export const QuestionSubLabel: React.FC<IQuestionSubLabelProps> = ({ text, ...pr
     return <span {...props} className={`text-[16px] block mb-3 ${props.className}`}>{text}</span>
 }
 
-export const RadioSelect = ({ labelText, selected, subtitle }: { labelText: string, subtitle?: string, selected?: boolean }) => {
+export const RadioSelect = ({ labelText, selected, subtitle, size }: { labelText: string, subtitle?: string, selected?: boolean, size?: TSize }) => {
 
     const [isSelected, setIsSelected] = useState(selected)
 
 
-    return <div className='flex items-start gap-3 mb-6 cursor-pointer'
+    return <div className={`flex items-start mb-6 cursor-pointer ${size === 'medium' ? 'gap-1.5' : 'gap-3'}`}
         onClick={() => setIsSelected(p => !p)}
     >
-        <CustomRadioInput isSelected={isSelected} />
+        <CustomRadioInput isSelected={isSelected} size={size} />
         <>
-            <span>{labelText}</span>
+            <span className={`${size === 'medium' ? 'text-[15px]' : 'text-base'}`}>{labelText}</span>
             {subtitle && <p className='text-gray-500 text-[15px] font-medium'>{subtitle}</p>}
         </>
     </div>
 }
 
-export const CheckboxSelect = ({ labelText, selected }: { labelText: string, selected?: boolean }) => {
+export const CheckboxSelect = ({ labelText, selected, size }: { labelText: string, selected?: boolean, size?: TSize }) => {
 
     const [isSelected, setIsSelected] = useState(selected)
 
@@ -84,9 +86,9 @@ export const CheckboxSelect = ({ labelText, selected }: { labelText: string, sel
     return <div className='flex items-center gap-3 my-5'
         onClick={() => setIsSelected(p => !p)}
     >
-        <CustomCheckboxInput isSelected={isSelected} />
+        <CustomCheckboxInput isSelected={isSelected} size={size} />
         <label htmlFor="">
-            <span>{labelText}</span>
+            <span className={`${size === 'medium' ? 'text-[15px]' : 'text-base'}`}>{labelText}</span>
         </label>
     </div>
 }
@@ -105,4 +107,15 @@ export const QuestionLabel: React.FC<ILabelProps> = ({ text, ...props }) => {
 
 export const Text3: React.FC<IText> = ({ text, ...props }) => {
     return <p className={`text-baseColor text-sm mb-2 ${props.className || ''}`} {...props}>{text}</p>
+}
+
+export const TextBesideText = ({ leftText, leftClassName, rightText, rightClassName, customClassName }: { leftClassName?: string, leftText: string, rightClassName?: string, rightText: string, customClassName?: string }) => {
+    return <div className={`flex items-start justify-between gap-10l mb-5 ${customClassName}`}>
+        <p className={`text-[15px] flex-[0.3] ${leftClassName}`}>{leftText}</p>
+        <p className={`text-[15px] flex-[0.7] font-semibold ${rightClassName}`}>{rightText}</p>
+    </div >
+}
+
+export const UnderlineText = ({ text, className }: { text: string, className?: string }) => {
+    return <span className={`text-green underline font-bold inline-block text-[14px] ${className}`}>{text}</span>
 }
